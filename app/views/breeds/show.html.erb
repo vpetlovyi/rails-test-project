@@ -1,2 +1,20 @@
-<%= humanize(@breed.breed) %>
-<%= image_tag @breed.image_url %>
+  <div class="columns">
+    <div class="column turbolinks-disable-scroll">
+      <%= render 'list', breeds: @breeds %>
+    </div>
+    <div class="column">
+      <div class="card" style="position: fixed;">
+        <div class="card-image">
+          <figure class="image">
+            <%= image_tag @breed.image_url %>
+          </figure>
+        </div>
+        <div class="card-content">
+          <h2 class="subtitle">
+            <%= humanize(@breed.breed) %>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+

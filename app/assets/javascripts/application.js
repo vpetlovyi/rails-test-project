@@ -14,3 +14,20 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+Turbolinks.scroll = {};
+
+$(document).on('click', '[data-turbolinks-scroll=false]', function (e) {
+    Turbolinks.scroll['top'] = {
+        html: $("html").scrollTop(),
+        body: $("body").scrollTop()
+    }
+});
+
+$(document).on('turbolinks:load', function() {
+    if (Turbolinks.scroll['top']) {
+        $('html').scrollTop(Turbolinks.scroll['top']['html']);
+        $('body').scrollTop(Turbolinks.scroll['top']['body']);
+    }
+    Turbolinks.scroll = {};
+});

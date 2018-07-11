@@ -5,7 +5,7 @@ module RedisCache
     redis_value = self.get(key)
     
     if redis_value
-      JSON.parse(redis_value).symbolize_keys
+      JSON.parse(redis_value)
     else
       result = yield
       err = REDIS.set(key, result.to_json, ex: expire)
