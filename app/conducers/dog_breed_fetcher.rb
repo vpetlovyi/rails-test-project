@@ -19,13 +19,7 @@ class DogBreedFetcher
   end
 
 private
-  def fetch_info
-    begin
-      JSON.parse(RestClient.get("https://dog.ceo/api/breeds/image/#{ @name }").body)
-    rescue Object => e
-      default_body
-    end
-  end
+
 
   def default_body
     {

@@ -88,6 +88,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (12.3.1)
     rdoc (4.3.0)
+    redis (3.3.5)
     rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
@@ -136,6 +137,7 @@ DEPENDENCIES
   jquery-rails
   pry
   rails (= 4.1.11)
+  redis
   rest-client (~> 2.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
@@ -148,4 +150,4 @@ RUBY VERSION
    ruby 2.1.4p265
 
 BUNDLED WITH
-   1.16.1
+   1.16.2

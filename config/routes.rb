@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :breeds
+  resources :breeds, only: %i(index show)
 
   root "breeds#index"
 
