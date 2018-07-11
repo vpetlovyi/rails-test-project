@@ -1,5 +1,1 @@
-<div class="dog">
-  <%- @breeds.each do |breed| %>
-    <h3><%= link_to humanize(breed), "#{breeds_path}/#{ breed.gsub('/', '-')}"%></h3>
-  <% end %>
-</div>
+<%= render 'list', breeds: @breeds %>

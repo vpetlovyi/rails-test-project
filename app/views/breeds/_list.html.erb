@@ -1,0 +1,8 @@
+<div>
+  <%- breeds.each do |breed| %>
+    <% formated_breed = breed.gsub('/', '-') %>
+    <h3>
+      <%= link_to humanize(breed), "#{breeds_path}/#{formated_breed}", data: { turbolinks_scroll: false}, class: params[:id] == formated_breed ? 'active' : '' %>
+    </h3>
+  <% end %>
+</div>

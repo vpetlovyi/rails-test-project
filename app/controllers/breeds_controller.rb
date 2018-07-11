@@ -1,16 +1,13 @@
 class BreedsController < ApplicationController
   include BreedsHelper
-  include RedisCache
 
-  def index
-    @breeds = RedisCache.get_or_set('breeds') do
-      format_breeds(BreedsFetcher.fetch, 15.minutes)
-    end
-  end
+  before_action :set_breeds
+
+  def index; end
 
   def show
     breed = params[:id].gsub('-', '/')
-    @breed = RedisCache.get_or_set(breed, 15.minutes) do
+    @breed = RedisCache.fetch(breed, CACHE_MINUTES) do
       BreedsFetcher.random_image(breed)
     end
     @breed = OpenStruct.new(@breed)
@@ -30,4 +27,11 @@ class BreedsController < ApplicationController
     new_breeds
   end
 
+  private
+
+  def set_breeds
+    @breeds = RedisCache.fetch('breeds', CACHE_MINUTES) do
+      format_breeds(BreedsFetcher.fetch)
+    end
+  end
 end
